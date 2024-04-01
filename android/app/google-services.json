@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "688576205677",
+    "project_id": "random-spot-finder-98e49",
+    "storage_bucket": "random-spot-finder-98e49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688576205677:android:eb80dac86e7b8fb5aa8064",
+        "android_client_info": {
+          "package_name": "com.example.randomspotfinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTKfx_P1g-w4PUWQLCoWX1fUMow5iCd7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

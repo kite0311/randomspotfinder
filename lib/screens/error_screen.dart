@@ -1,0 +1,38 @@
+//TODO: エラー画面
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:randomspotfinder/screens/initial_screen.dart';
+
+class ErrorScreen extends StatelessWidget {
+  const ErrorScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('エラー'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text('エラーが発生しました'),
+            SizedBox(
+              height: 16,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InitailScreen(),
+                  ),
+                );
+              },
+              child: Text('戻る'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
