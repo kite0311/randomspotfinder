@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,16 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAlxKpPIT9EO1r_yAPvm-HU7tJBdYCXm74',
-    appId: '1:688576205677:web:ab81b197097361fcaa8064',
-    messagingSenderId: '688576205677',
-    projectId: 'random-spot-finder-98e49',
-    authDomain: 'random-spot-finder-98e49.firebaseapp.com',
-    storageBucket: 'random-spot-finder-98e49.appspot.com',
-    measurementId: 'G-4297F8NK41',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCTKfx_P1g-w4PUWQLCoWX1fUMow5iCd7Y',
     appId: '1:688576205677:android:eb80dac86e7b8fb5aa8064',
@@ -68,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'random-spot-finder-98e49',
     storageBucket: 'random-spot-finder-98e49.appspot.com',
     iosBundleId: 'com.example.randomspotfinder',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB7WQt6A5R_QCWswaxzBjx1fifqE-T3PHk',
-    appId: '1:688576205677:ios:38fe029f7a587068aa8064',
-    messagingSenderId: '688576205677',
-    projectId: 'random-spot-finder-98e49',
-    storageBucket: 'random-spot-finder-98e49.appspot.com',
-    iosBundleId: 'com.example.randomspotfinder.RunnerTests',
   );
 }
