@@ -1,21 +1,20 @@
-//TODO: エラー画面
-import 'package:flutter/cupertino.dart';
+//TODO: 現在地の設定画面
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/screens/initial_screen.dart';
+import 'package:randomspotfinder/presentation/pages/location_setting/search_radius_setting_screen.dart';
 
-class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
+class LocationSettingScreen extends StatelessWidget {
+  const LocationSettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('エラー'),
+        title: const Text('現在地の設定'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text('エラーが発生しました'),
+            Text('現在地を設定してください'),
             SizedBox(
               height: 16,
             ),
@@ -24,11 +23,11 @@ class ErrorScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InitailScreen(),
+                    builder: (context) => SearchRadiusSettingScreen(),
                   ),
                 );
               },
-              child: Text('戻る'),
+              child: Text('設定'),
             ),
           ],
         ),
