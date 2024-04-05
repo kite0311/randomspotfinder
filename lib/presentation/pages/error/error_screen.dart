@@ -1,20 +1,21 @@
-//TODO: 初期画面(ログイン/非ログインの認証を行う)
-
+//TODO: エラー画面
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/screens/current_location_setting_screen.dart';
+import 'package:randomspotfinder/presentation/pages/login/initial_screen.dart';
 
-class InitailScreen extends StatelessWidget {
-  const InitailScreen({super.key});
+class ErrorScreen extends StatelessWidget {
+  const ErrorScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('エラー'),
+      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('ログインしてください'),
+            Text('エラーが発生しました'),
             SizedBox(
               height: 16,
             ),
@@ -23,11 +24,11 @@ class InitailScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CurrentLocationSettingScreen(),
+                    builder: (context) => InitailScreen(),
                   ),
                 );
               },
-              child: Text('ログイン'),
+              child: Text('戻る'),
             ),
           ],
         ),
