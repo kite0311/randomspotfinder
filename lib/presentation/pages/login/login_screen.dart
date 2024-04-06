@@ -3,10 +3,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/pages/location_setting/location_setting_screen.dart';
 
-class InitailScreen extends StatelessWidget {
-  const InitailScreen({super.key});
+import '../home/home_screen.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class InitailScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LocationSettingScreen(),
+                        builder: (context) => HomeScreen(),
                       ),
                     );
                   },

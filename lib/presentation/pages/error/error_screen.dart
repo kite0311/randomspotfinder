@@ -1,7 +1,7 @@
 //TODO: エラー画面
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/pages/login/initial_screen.dart';
+import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});
@@ -24,7 +24,7 @@ class ErrorScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InitailScreen(),
+                    builder: (context) => UserProfileScreen(),
                   ),
                 );
               },
