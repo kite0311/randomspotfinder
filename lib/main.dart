@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:randomspotfinder/presentation/pages/favorite/favorite_screen.dart';
+import 'package:randomspotfinder/presentation/pages/home/home_screen.dart';
 import 'package:randomspotfinder/presentation/pages/login/login_screen.dart';
 import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/profile': (context) => const UserProfileScreen(),
         '/favorite': (context) => const FavoriteScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
