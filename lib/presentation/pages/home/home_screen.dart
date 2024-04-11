@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/widgets/cmn_floating_action_button.dart';
+import 'package:randomspotfinder/presentation/widgets/roulette_button.dart';
 
 import '../../widgets/cmn_bottom_app_bar.dart';
 
@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: CmnFloatingActionButton(),
+      floatingActionButton: RouletteButton(),
       bottomNavigationBar: CmnBottomAppBar(),
     );
   }
