@@ -14,18 +14,25 @@ class _RouletteButtonState extends State<RouletteButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      backgroundColor: Colors.white,
-      onPressed: () {
-        showDialog<void>(
-            context: context,
-            builder: (_) {
-              return RouletteScreen();
-            });
-      },
-      child: RiveAnimation.asset(
-        'assets/rive/roullette_button.riv',
-        animations: ['Rotate'],
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: FittedBox(
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          shape: CircleBorder(),
+          onPressed: () {
+            showDialog<void>(
+                context: context,
+                builder: (_) {
+                  return RouletteScreen();
+                });
+          },
+          child: RiveAnimation.asset(
+            'assets/rive/roullette_button.riv',
+            animations: ['Rotate'],
+          ),
+        ),
       ),
     );
   }

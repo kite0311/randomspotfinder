@@ -6,12 +6,12 @@ class CmnBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      height: 60,
+      height: 70,
       color: Colors.blue,
-      notchMargin: 20.0,
+      notchMargin: 8.0,
       shape: CircularNotchedRectangle(),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 50.0),
+        padding: EdgeInsets.symmetric(horizontal: 60.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
