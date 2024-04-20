@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:randomspotfinder/presentation/pages/favorite/favorite_screen.dart';
 import 'package:randomspotfinder/presentation/pages/home/home_screen.dart';
 import 'package:randomspotfinder/presentation/pages/login/login_screen.dart';
+import 'package:randomspotfinder/presentation/pages/roulette/roulette_screen.dart';
 import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
 import 'firebase_options.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => const UserProfileScreen(),
         '/favorite': (context) => const FavoriteScreen(),
         '/home': (context) => const HomeScreen(),
+        'roulette': (context) => const RouletteScreen(),
       },
     );
   }
