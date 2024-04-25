@@ -65,7 +65,7 @@ class _RouletteScreen extends State<RouletteScreen> {
                         selectedIndex = null;
                       });
                     }
-                    Navigator.popAndPushNamed(context, "/home");
+                    Navigator.popAndPushNamed(context, "/map");
                   },
                 ),
               ),
