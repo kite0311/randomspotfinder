@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
+import '../nearby_api/nearby.dart';
+
 ///現在地を取得する処理
 class LocationService {
   Future<Position> getCurrentLocation() async {
@@ -65,17 +67,17 @@ class Restaurant {
   }
 }
 
-Future<List<Restaurant>> searchNearByRestaurantByJson(
+Future<List<NearBy>> searchNearByRestaurantByJson(
     String responseUrl) async {
   var response = await http.get(Uri.parse(responseUrl));
   if (response.statusCode == 200) {
-    List<Restaurant> restaurants = [];
+    List<NearBy> restaurants = [];
     debugPrint(response.body);
     var data = jsonDecode(response.body);
 
     if (data['results'] != null) {
       data['results'].forEach((restaurant) {
-        restaurants.add(Restaurant.fromJson(restaurant));
+        restaurants.add(NearBy.fromJson(restaurant));
       });
     }
     print(restaurants);

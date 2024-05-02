@@ -14,7 +14,7 @@ class NearBy with _$NearBy {
     required String name,
     OpeningHours? openingHours,
     List<Photos>? photos,
-    required String placeId,
+    String? placeId,
     PlusCode? plusCode,
     int? priceLevel,
     double? rating,
