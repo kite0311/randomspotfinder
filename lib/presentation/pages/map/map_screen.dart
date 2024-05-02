@@ -1,6 +1,7 @@
 //TODO: 全体マップ画面
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import '../error/error_screen.dart';
+import 'googlemap/google_maps_api.dart';
 
 ///マップ事態に検索機能はないが、ピンを打ったりできるマップを表示させたい画面
 class MapScreen extends StatefulWidget {
@@ -13,25 +14,7 @@ class _MapScreenState extends State<MapScreen> {
   late String long;
 
   late String locationMessage = 'WAITING FOR LOCATION...';
-
-  /// 現在地を取得する
-  Future<Position> _getCurrentLocation() async {
-    /// 位置情報の取得を許可するかどうかの確認
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
-    }
-
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    return await Geolocator.getCurrentPosition();
-  }
+  final LocationService _locationService = LocationService();
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +28,21 @@ class _MapScreenState extends State<MapScreen> {
           children: [
             Text('Map'),
             ElevatedButton(
-              onPressed: () {
-                _getCurrentLocation().then((value) {
-                  lat = '${value.latitude}';
-                  long = '${value.longitude}';
+              onPressed: () async {
+                try {
+                  final currentLocation = await _locationService.getCurrentLocation();
+                  final search = await _locationService.searchNearByRestaurant();
+                  lat = '${currentLocation.latitude}';
+                  long = '${currentLocation.longitude}';
                   setState(() {
                     locationMessage = 'Latitude: $lat, Longitude: $long';
                   });
-                });
+                } catch (e) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        ErrorScreen(errorMessage: e.toString()),
+                  ));
+                }
               },
               child: Text('Get Current Location'),
             ),
