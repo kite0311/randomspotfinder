@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../models/nearby_api/nearby.dart';
+
+
 ///現在地を取得する処理
 class LocationService {
   Future<Position> getCurrentLocation() async {
@@ -26,7 +29,7 @@ class LocationService {
 
   /// 近くの施設を検索
   /// TODO　現在は仮で現在地空半径500m以内のレストランを検索させる
-  Future<void> searchNearByRestaurant() async {
+  Future<List<NearBy>> searchNearByRestaurant() async {
     Position position = await getCurrentLocation();
     String baseUrl =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
@@ -40,45 +43,23 @@ class LocationService {
     String responseUrl =
         '$baseUrl?location=$currentLocation&radius=$radius&type=$type&key=$apikey';
 
-    searchNearByRestaurantByJson(responseUrl);
+    return searchNearBy(responseUrl);
   }
 }
 
-/// 仮のmodelクラス
-class Restaurant {
-  final String? name;
-  final String? location;
-  final String? rating;
-
-  Restaurant({
-    required this.name,
-    required this.location,
-    required this.rating,
-  });
-
-  factory Restaurant.fromJson(Map<String, dynamic> json) {
-    return Restaurant(
-      name: json['name'],
-      location: json['location'],
-      rating: json['rating'] != null ? json['rating'].toString() : '0',
-    );
-  }
-}
-
-Future<List<Restaurant>> searchNearByRestaurantByJson(
+Future<List<NearBy>> searchNearBy(
     String responseUrl) async {
   var response = await http.get(Uri.parse(responseUrl));
   if (response.statusCode == 200) {
-    List<Restaurant> restaurants = [];
+    List<NearBy> restaurants = [];
     debugPrint(response.body);
     var data = jsonDecode(response.body);
 
     if (data['results'] != null) {
-      data['results'].forEach((restaurant) {
-        restaurants.add(Restaurant.fromJson(restaurant));
+      data['results'].forEach((value) {
+        restaurants.add(NearBy.fromJson(value));
       });
     }
-    print(restaurants);
     return restaurants;
   } else {
     throw Exception('Failed to load data');
