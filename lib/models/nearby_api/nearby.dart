@@ -1,32 +1,67 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'nearby.freezed.dart';
+
 part 'nearby.g.dart';
 
 @freezed
 class NearBy with _$NearBy {
   const factory NearBy({
+    /// business_status
     String? businessStatus,
+
+    /// geometry
     Geometry? geometry,
+
+    /// icon
     String? icon,
+
+    /// icon_background_color
     String? iconBackgroundColor,
+
+    /// icon_mask_base_uri
     String? iconMaskBaseUri,
+
+    /// name
     required String name,
+
+    /// opening_hours
     OpeningHours? openingHours,
+
+    /// photos
     List<Photos>? photos,
+
+    /// place_id
     String? placeId,
+
+    /// plus_code
     PlusCode? plusCode,
+
+    /// price_level
     int? priceLevel,
+
+    /// rating
     double? rating,
+
+    /// reference
     String? reference,
+
+    /// scope
     String? scope,
+
+    /// types
     required List<String> types,
+
+    /// user_ratings_total
     int? userRatingsTotal,
+
+    /// vicinity
     String? vicinity,
   }) = _NearBy;
 
   factory NearBy.fromJson(Map<String, dynamic> json) => _$NearByFromJson(json);
 }
+
 class Geometry {
   Location? location;
   Viewport? viewport;
