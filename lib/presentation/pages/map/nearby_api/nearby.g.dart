@@ -21,7 +21,7 @@ _$NearByImpl _$$NearByImplFromJson(Map<String, dynamic> json) => _$NearByImpl(
       photos: (json['photos'] as List<dynamic>?)
           ?.map((e) => Photos.fromJson(e as Map<String, dynamic>))
           .toList(),
-      placeId: json['placeId'] as String,
+      placeId: json['placeId'] as String?,
       plusCode: json['plusCode'] == null
           ? null
           : PlusCode.fromJson(json['plusCode'] as Map<String, dynamic>),

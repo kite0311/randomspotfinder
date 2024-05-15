@@ -20,22 +20,55 @@ NearBy _$NearByFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NearBy {
+  /// business_status
   String? get businessStatus => throw _privateConstructorUsedError;
+
+  /// geometry
   Geometry? get geometry => throw _privateConstructorUsedError;
+
+  /// icon
   String? get icon => throw _privateConstructorUsedError;
+
+  /// icon_background_color
   String? get iconBackgroundColor => throw _privateConstructorUsedError;
+
+  /// icon_mask_base_uri
   String? get iconMaskBaseUri => throw _privateConstructorUsedError;
+
+  /// name
   String get name => throw _privateConstructorUsedError;
+
+  /// opening_hours
   OpeningHours? get openingHours => throw _privateConstructorUsedError;
+
+  /// photos
   List<Photos>? get photos => throw _privateConstructorUsedError;
-  String get placeId => throw _privateConstructorUsedError;
+
+  /// place_id
+  String? get placeId => throw _privateConstructorUsedError;
+
+  /// plus_code
   PlusCode? get plusCode => throw _privateConstructorUsedError;
+
+  /// price_level
   int? get priceLevel => throw _privateConstructorUsedError;
+
+  /// rating
   double? get rating => throw _privateConstructorUsedError;
+
+  /// reference
   String? get reference => throw _privateConstructorUsedError;
+
+  /// scope
   String? get scope => throw _privateConstructorUsedError;
+
+  /// types
   List<String> get types => throw _privateConstructorUsedError;
+
+  /// user_ratings_total
   int? get userRatingsTotal => throw _privateConstructorUsedError;
+
+  /// vicinity
   String? get vicinity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +90,7 @@ abstract class $NearByCopyWith<$Res> {
       String name,
       OpeningHours? openingHours,
       List<Photos>? photos,
-      String placeId,
+      String? placeId,
       PlusCode? plusCode,
       int? priceLevel,
       double? rating,
@@ -89,7 +122,7 @@ class _$NearByCopyWithImpl<$Res, $Val extends NearBy>
     Object? name = null,
     Object? openingHours = freezed,
     Object? photos = freezed,
-    Object? placeId = null,
+    Object? placeId = freezed,
     Object? plusCode = freezed,
     Object? priceLevel = freezed,
     Object? rating = freezed,
@@ -132,10 +165,10 @@ class _$NearByCopyWithImpl<$Res, $Val extends NearBy>
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<Photos>?,
-      placeId: null == placeId
+      placeId: freezed == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plusCode: freezed == plusCode
           ? _value.plusCode
           : plusCode // ignore: cast_nullable_to_non_nullable
@@ -188,7 +221,7 @@ abstract class _$$NearByImplCopyWith<$Res> implements $NearByCopyWith<$Res> {
       String name,
       OpeningHours? openingHours,
       List<Photos>? photos,
-      String placeId,
+      String? placeId,
       PlusCode? plusCode,
       int? priceLevel,
       double? rating,
@@ -218,7 +251,7 @@ class __$$NearByImplCopyWithImpl<$Res>
     Object? name = null,
     Object? openingHours = freezed,
     Object? photos = freezed,
-    Object? placeId = null,
+    Object? placeId = freezed,
     Object? plusCode = freezed,
     Object? priceLevel = freezed,
     Object? rating = freezed,
@@ -261,10 +294,10 @@ class __$$NearByImplCopyWithImpl<$Res>
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<Photos>?,
-      placeId: null == placeId
+      placeId: freezed == placeId
           ? _value.placeId
           : placeId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plusCode: freezed == plusCode
           ? _value.plusCode
           : plusCode // ignore: cast_nullable_to_non_nullable
@@ -313,7 +346,7 @@ class _$NearByImpl implements _NearBy {
       required this.name,
       this.openingHours,
       final List<Photos>? photos,
-      required this.placeId,
+      this.placeId,
       this.plusCode,
       this.priceLevel,
       this.rating,
@@ -328,21 +361,38 @@ class _$NearByImpl implements _NearBy {
   factory _$NearByImpl.fromJson(Map<String, dynamic> json) =>
       _$$NearByImplFromJson(json);
 
+  /// business_status
   @override
   final String? businessStatus;
+
+  /// geometry
   @override
   final Geometry? geometry;
+
+  /// icon
   @override
   final String? icon;
+
+  /// icon_background_color
   @override
   final String? iconBackgroundColor;
+
+  /// icon_mask_base_uri
   @override
   final String? iconMaskBaseUri;
+
+  /// name
   @override
   final String name;
+
+  /// opening_hours
   @override
   final OpeningHours? openingHours;
+
+  /// photos
   final List<Photos>? _photos;
+
+  /// photos
   @override
   List<Photos>? get photos {
     final value = _photos;
@@ -352,19 +402,34 @@ class _$NearByImpl implements _NearBy {
     return EqualUnmodifiableListView(value);
   }
 
+  /// place_id
   @override
-  final String placeId;
+  final String? placeId;
+
+  /// plus_code
   @override
   final PlusCode? plusCode;
+
+  /// price_level
   @override
   final int? priceLevel;
+
+  /// rating
   @override
   final double? rating;
+
+  /// reference
   @override
   final String? reference;
+
+  /// scope
   @override
   final String? scope;
+
+  /// types
   final List<String> _types;
+
+  /// types
   @override
   List<String> get types {
     if (_types is EqualUnmodifiableListView) return _types;
@@ -372,8 +437,11 @@ class _$NearByImpl implements _NearBy {
     return EqualUnmodifiableListView(_types);
   }
 
+  /// user_ratings_total
   @override
   final int? userRatingsTotal;
+
+  /// vicinity
   @override
   final String? vicinity;
 
@@ -462,7 +530,7 @@ abstract class _NearBy implements NearBy {
       required final String name,
       final OpeningHours? openingHours,
       final List<Photos>? photos,
-      required final String placeId,
+      final String? placeId,
       final PlusCode? plusCode,
       final int? priceLevel,
       final double? rating,
@@ -475,38 +543,72 @@ abstract class _NearBy implements NearBy {
   factory _NearBy.fromJson(Map<String, dynamic> json) = _$NearByImpl.fromJson;
 
   @override
+
+  /// business_status
   String? get businessStatus;
   @override
+
+  /// geometry
   Geometry? get geometry;
   @override
+
+  /// icon
   String? get icon;
   @override
+
+  /// icon_background_color
   String? get iconBackgroundColor;
   @override
+
+  /// icon_mask_base_uri
   String? get iconMaskBaseUri;
   @override
+
+  /// name
   String get name;
   @override
+
+  /// opening_hours
   OpeningHours? get openingHours;
   @override
+
+  /// photos
   List<Photos>? get photos;
   @override
-  String get placeId;
+
+  /// place_id
+  String? get placeId;
   @override
+
+  /// plus_code
   PlusCode? get plusCode;
   @override
+
+  /// price_level
   int? get priceLevel;
   @override
+
+  /// rating
   double? get rating;
   @override
+
+  /// reference
   String? get reference;
   @override
+
+  /// scope
   String? get scope;
   @override
+
+  /// types
   List<String> get types;
   @override
+
+  /// user_ratings_total
   int? get userRatingsTotal;
   @override
+
+  /// vicinity
   String? get vicinity;
   @override
   @JsonKey(ignore: true)
