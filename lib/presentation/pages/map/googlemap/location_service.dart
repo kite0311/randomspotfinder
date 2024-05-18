@@ -31,7 +31,7 @@ class LocationService {
 
   /// 近くの施設を検索
   /// TODO　現在は仮で現在地空半径500m以内の施設を検索させる
-  Future<List<NearBy>> e() async {
+  Future<List<NearBy>> searchNearBySpot() async {
     Position position = await getCurrentLocation();
     String baseUrl =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
