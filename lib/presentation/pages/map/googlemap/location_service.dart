@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:randomspotfinder/constant/types.dart';
 
 import '../../../../models/nearby_api/nearby.dart';
 
 
 ///現在地を取得する処理
 class LocationService {
+
   Future<Position> getCurrentLocation() async {
     /// 位置情報の取得を許可するかどうかの確認
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -28,8 +30,8 @@ class LocationService {
   }
 
   /// 近くの施設を検索
-  /// TODO　現在は仮で現在地空半径500m以内のレストランを検索させる
-  Future<List<NearBy>> searchNearByRestaurant() async {
+  /// TODO　現在は仮で現在地空半径500m以内の施設を検索させる
+  Future<List<NearBy>> e() async {
     Position position = await getCurrentLocation();
     String baseUrl =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
@@ -38,7 +40,7 @@ class LocationService {
     String apikey = 'AIzaSyDmHm49W72reh12HZA4KQdSY93jxJIubYM';
     String currentLocation = '${position.latitude},${position.longitude}';
     String radius = '1500';
-    String type = 'restaurant';
+    String type = Entertainment.PARK;
 
     String responseUrl =
         '$baseUrl?location=$currentLocation&radius=$radius&type=$type&key=$apikey';
