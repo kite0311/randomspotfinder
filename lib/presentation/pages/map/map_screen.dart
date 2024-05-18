@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
                     final currentLocation =
                         await _locationService.getCurrentLocation();
                     searchResult =
-                        await _locationService.searchNearByRestaurant();
+                        await _locationService.searchNearBySpot();
                     lat = '${currentLocation.latitude}';
                     long = '${currentLocation.longitude}';
                     setState(() {
