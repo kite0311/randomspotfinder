@@ -39,4 +39,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/rive/roullette_button.riv
-    - assets/test/test.json
