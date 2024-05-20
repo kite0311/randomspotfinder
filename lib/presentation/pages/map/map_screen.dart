@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:randomspotfinder/models/nearby_api/nearby.dart';
 import '../error/error_screen.dart';
-import 'googlemap/location_service.dart';
+import '../../../domain/features/location/location_service.dart';
 import 'map_result.dart';
 
 ///マップ事態に検索機能はないが、ピンを打ったりできるマップを表示させたい画面
