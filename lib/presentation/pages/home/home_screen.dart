@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/pages/map/googlemap/location_service.dart';
+import 'package:randomspotfinder/domain/features/location/location_service.dart';
 import 'package:randomspotfinder/presentation/widgets/roulette_button.dart';
 
 import '../../widgets/cmn_bottom_app_bar.dart';
