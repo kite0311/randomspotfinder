@@ -34,7 +34,7 @@ class searchList extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
           isThreeLine: true,
-          title: Text(searchResult[index].name),
+          title: Text('${index + 1}.${searchResult[index].name}'),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
