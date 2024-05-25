@@ -25,6 +25,19 @@ class Entertainment {
   static const String STADIUM = 'stadium'; // スタジアム
   static const String ZOO = 'zoo'; // 動物園
   static const String ART_GALLERY = 'art_gallery'; // 美術館
+
+  static const List<String> entertainmentList = [
+    Entertainment.AMUSEMENT_PARK,
+    Entertainment.AQUARIUM,
+    Entertainment.CASINO,
+    Entertainment.MOVIE_THEATER,
+    Entertainment.MUSEUM,
+    Entertainment.NIGHT_CLUB,
+    Entertainment.PARK,
+    Entertainment.STADIUM,
+    Entertainment.ZOO,
+    Entertainment.ART_GALLERY,
+  ];
 }
 
 class FoodAndDrink {
@@ -33,6 +46,14 @@ class FoodAndDrink {
   static const String CAFE = 'cafe'; // カフェ
   static const String RESTAURANT = 'restaurant'; // レストラン
   static const String LIQUOR_STORE = 'liquor_store'; // 酒屋
+
+  static const List<String> foodAndDrinkList = [
+    FoodAndDrink.BAKERY,
+    FoodAndDrink.BAR,
+    FoodAndDrink.CAFE,
+    FoodAndDrink.RESTAURANT,
+    FoodAndDrink.LIQUOR_STORE,
+  ];
 }
 
 class Shopping {
@@ -50,6 +71,23 @@ class Shopping {
   static const String SHOPPING_MALL = 'shopping_mall'; // ショッピングモール
   static const String STORE = 'store'; // 店舗
   static const String SUPERMARKET = 'supermarket'; // スーパーマーケット
+
+  static const List<String> shoppingList = [
+    Shopping.BOOK_STORE,
+    Shopping.CLOTHING_STORE,
+    Shopping.CONVENIENCE_STORE,
+    Shopping.DEPARTMENT_STORE,
+    Shopping.ELECTRONICS_STORE,
+    Shopping.FURNITURE_STORE,
+    Shopping.HARDWARE_STORE,
+    Shopping.HOME_GOODS_STORE,
+    Shopping.JEWELRY_STORE,
+    Shopping.PET_STORE,
+    Shopping.SHOE_STORE,
+    Shopping.SHOPPING_MALL,
+    Shopping.STORE,
+    Shopping.SUPERMARKET,
+  ];
 }
 
 class HealthAndWellness {
@@ -62,7 +100,17 @@ class HealthAndWellness {
   static const String PHARMACY = 'pharmacy'; // 薬局
   // static const String PHYSIOTHERAPIST = 'physiotherapist'; // 理学療法士
   static const String SPA = 'spa'; // スパ
-// static const String VETERINARY_CARE = 'veterinary_care'; // 獣医
+  // static const String VETERINARY_CARE = 'veterinary_care'; // 獣医
+
+  static const List<String> healthAndWellnessList = [
+    HealthAndWellness.BEAUTY_SALON,
+    HealthAndWellness.DENTIST,
+    HealthAndWellness.GYM,
+    HealthAndWellness.HAIR_CARE,
+    HealthAndWellness.HOSPITAL,
+    HealthAndWellness.PHARMACY,
+    HealthAndWellness.SPA,
+  ];
 }
 
 class Services {
@@ -84,6 +132,17 @@ class Services {
   static const String POLICE = 'police'; // 警察
   // static const String ROOFING_CONTRACTOR = 'roofing_contractor'; // 屋根工事業者
   static const String STORAGE = 'storage'; // 倉庫
+
+  static const List<String> servicesList = [
+    Services.ATM,
+    Services.BANK,
+    Services.CAR_RENTAL,
+    Services.GAS_STATION,
+    Services.LAUNDRY,
+    Services.PAINTER,
+    Services.POLICE,
+    Services.STORAGE,
+  ];
 }
 
 class Transportation {
@@ -94,6 +153,15 @@ class Transportation {
   static const String TAXI_STAND = 'taxi_stand'; // タクシー乗り場
   static const String TRAIN_STATION = 'train_station'; // 鉄道駅
   static const String TRANSIT_STATION = 'transit_station'; // 交通駅
+
+  static const List<String> transportationList = [
+    Transportation.AIRPORT,
+    Transportation.BUS_STATION,
+    Transportation.SUBWAY_STATION,
+    Transportation.TAXI_STAND,
+    Transportation.TRAIN_STATION,
+    Transportation.TRANSIT_STATION,
+  ];
 }
 
 class EducationAndGovernment {
@@ -104,6 +172,16 @@ class EducationAndGovernment {
   static const String SCHOOL = 'school'; // 学校
   static const String SECONDARY_SCHOOL = 'secondary_school'; // 中学校
   static const String UNIVERSITY = 'university'; // 大学
+
+  static const List<String> educationAndGovernmentList = [
+    EducationAndGovernment.CITY_HALL,
+    EducationAndGovernment.COURTHOUSE,
+    EducationAndGovernment.LIBRARY,
+    EducationAndGovernment.PRIMARY_SCHOOL,
+    EducationAndGovernment.SCHOOL,
+    EducationAndGovernment.SECONDARY_SCHOOL,
+    EducationAndGovernment.UNIVERSITY,
+  ];
 }
 
 class Miscellaneous {
@@ -130,4 +208,22 @@ class Miscellaneous {
 // static const String DRUGSTORE = 'drugstore'; // 薬局
 // static const String INSURANCE_AGENCY = 'insurance_agency'; // 保険代理店
 // static const String LOCAL_GOVERNMENT_OFFICE = 'local_government_office'; // 地方自治体のオフィス
+
+  static const List<String> miscellaneousList = [
+    Miscellaneous.CAMPGROUND,
+    Miscellaneous.CEMETERY,
+    Miscellaneous.CHURCH,
+    Miscellaneous.EMBASSY,
+    Miscellaneous.FLORIST,
+    Miscellaneous.LODGING,
+    Miscellaneous.MEAL_DELIVERY,
+    Miscellaneous.MEAL_TAKEAWAY,
+    Miscellaneous.MOVIE_RENTAL,
+    Miscellaneous.PARKING,
+    Miscellaneous.POST_OFFICE,
+    Miscellaneous.REAL_ESTATE_AGENCY,
+    Miscellaneous.TOURIST_ATTRACTION,
+    Miscellaneous.TRAVEL_AGENCY,
+    Miscellaneous.BICYCLE_STORE,
+  ];
 }
