@@ -58,13 +58,21 @@ class LocationService {
     String distance = '1500';
 
     // 検索する施設の種類を設定
-    String type = FoodAndDrink.BAKERY;
+    String type = FoodAndDrink.RESTAURANT;
 
     // 現在地の緯度経度
     String currentLocation = '${position.latitude},${position.longitude}';
 
     // API検索結果を格納するリスト
     List<NearBy> allNearBySpot = [];
+    // 結果返却用リスト
+    List<NearBy> allNearBySpotDistinct = [];
+
+    //　現在地から規定範囲内で検索
+    String responseUrl =
+        '$baseUrl?location=$currentLocation&radius=$distance&type=$type&key=$apikey';
+    List<NearBy> results = await searchNearBy(responseUrl);
+    allNearBySpot.addAll(results);
 
     // 検索範囲を拡大するため、現在地から起点に東西南北に検索範囲を拡大
     for (var dir in Direction.values) {
@@ -75,14 +83,14 @@ class LocationService {
         double.parse(distance),
       );
 
-      String responseUrl = '$baseUrl?location=$setLocation&radius=$distance&type=$type&key=$apikey';
+      String responseUrl =
+          '$baseUrl?location=$setLocation&radius=$distance&type=$type&key=$apikey';
 
       //各方角の検索結果を集計
       List<NearBy> results = await searchNearBy(responseUrl);
       allNearBySpot.addAll(results);
-
     }
-    var allNearBySpotDistinct = allNearBySpot.toSet().toList();
+    allNearBySpotDistinct = checkDistinct(allNearBySpot);
 
     return allNearBySpotDistinct;
   }
@@ -109,5 +117,19 @@ class LocationService {
     } else {
       throw Exception('Failed to load data');
     }
+  }
+
+  // 検索結果の重複チェック
+  static List<NearBy> checkDistinct(List<NearBy> allNearBySpot) {
+    List<NearBy> allNearBySpotDistinct = [];
+    Map<String, NearBy> distinctMap = {};
+
+    for (var spot in allNearBySpot) {
+      if (!distinctMap.containsKey(spot.name)) {
+        distinctMap[spot.name] = spot;
+      }
+    }
+
+    return allNearBySpotDistinct = distinctMap.values.toList();
   }
 }
