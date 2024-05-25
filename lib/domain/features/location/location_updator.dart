@@ -10,7 +10,7 @@ class LocationUpdater {
   static const double metersPerDegreeLatitude = 111000;
 
   // 地球の半径（単位: km）
-  static const double earthRadius = 6371.0;
+  static const double earthRadius = 6371000.0;
 
   // 緯度の変化を計算
   static double distanceToLatitudeChange(double distance) {
@@ -18,11 +18,13 @@ class LocationUpdater {
   }
 
   // 経度の変化を計算
-  static double calculateLongitudeChange(double latitude, double distance) {
-    double latitudeInRadians = latitude * (pi / 180);
-    double longitudeDistanceAtLatitude =
-        cos(latitudeInRadians) * earthRadius * (pi / 180);
-    return distance / longitudeDistanceAtLatitude;
+  static double calculateLongitudeChange(
+      double currentLatitude, double currentLongitude, double distance) {
+    // 経度1度当たりの距離を計算
+    double deltaLongitudeDegrees =
+        (distance / (earthRadius * cos(currentLatitude * (pi / 180)))) *
+            (180 / pi);
+    return deltaLongitudeDegrees;
   }
 
   // 方角に応じて新しい位置を計算
@@ -39,10 +41,10 @@ class LocationUpdater {
         newLatitude -= distanceToLatitudeChange(distance);
         break;
       case Direction.east:
-        newLongitude += calculateLongitudeChange(latitude, distance);
+        newLongitude += calculateLongitudeChange(latitude, longitude, distance);
         break;
       case Direction.west:
-        newLongitude -= calculateLongitudeChange(latitude, distance);
+        newLongitude -= calculateLongitudeChange(latitude, longitude, distance);
         break;
     }
 
