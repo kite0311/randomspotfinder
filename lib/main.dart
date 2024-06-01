@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:randomspotfinder/presentation/pages/favorite/favorite_screen.dart';
 import 'package:randomspotfinder/presentation/pages/home/home_screen.dart';
 import 'package:randomspotfinder/presentation/pages/login/login_screen.dart';
-import 'package:randomspotfinder/presentation/pages/map/map_result.dart';
 import 'package:randomspotfinder/presentation/pages/map/map_screen.dart';
 import 'package:randomspotfinder/presentation/pages/roulette/roulette_screen.dart';
 import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
@@ -16,8 +16,8 @@ void main() async {
     name: 'RandomSpotFinder',
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  runApp(const MyApp());
+  const scope = ProviderScope(child: const MyApp());
+  runApp(scope);
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/profile': (context) => const UserProfileScreen(),
         '/favorite': (context) => const FavoriteScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => HomeScreen(),
         'roulette': (context) => const RouletteScreen(),
         '/map': (context) => MapScreen(),
       },
