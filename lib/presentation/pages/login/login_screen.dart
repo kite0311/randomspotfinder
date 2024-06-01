@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../domain/features/services/location/location_service.dart';
 import '../home/home_screen.dart';
-import '../../../domain/features/location/location_service.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

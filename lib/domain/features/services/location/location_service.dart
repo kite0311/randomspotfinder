@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:randomspotfinder/constant/types.dart';
+import 'package:dotenv/dotenv.dart';
 
 import '../../../../config.dart';
 import '../../../../models/nearby/nearby.dart';
