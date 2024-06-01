@@ -3,7 +3,7 @@
  */
 import 'dart:math';
 
-import '../../types/direction.dart';
+import '../../../types/direction.dart';
 
 class LocationUpdater {
   // 地球上での緯度1度当たりの距離（メートル単位）

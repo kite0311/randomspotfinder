@@ -1,7 +1,8 @@
 //TODO goolemap apiを叩いたあとに取得結果を表示する画面
 import 'package:flutter/material.dart';
 
-import '../../../models/nearby_api/nearby.dart';
+import '../../../domain/features/services/location/location_service.dart';
+import '../../../models/nearby/nearby.dart';
 
 class MapResult extends StatelessWidget {
   const MapResult({super.key, required this.searchResult});
@@ -49,3 +50,19 @@ class searchList extends StatelessWidget {
     );
   }
 }
+
+
+class TestImages extends StatelessWidget {
+  TestImages({Key? key}) : super(key: key) {
+    _locationService.fetchPhoto('ChIJN1t_tDeuEmsRUsoyG83frY4' as NearBy);
+  }
+  final LocationService _locationService = LocationService();
+
+  get image => null;
+  
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset('assets/images/food.jpg');
+  }
+}
+
