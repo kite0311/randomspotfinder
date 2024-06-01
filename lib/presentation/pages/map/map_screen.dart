@@ -1,9 +1,9 @@
 //TODO: 全体マップ画面
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/models/nearby_api/nearby.dart';
+import '../../../domain/features/services/location/location_service.dart';
+import '../../../models/nearby/nearby.dart';
 import '../error/error_screen.dart';
-import '../../../domain/features/location/location_service.dart';
-import 'map_result.dart';
+import 'map_result_screen.dart';
 
 ///マップ事態に検索機能はないが、ピンを打ったりできるマップを表示させたい画面
 class MapScreen extends StatefulWidget {
@@ -36,8 +36,7 @@ class _MapScreenState extends State<MapScreen> {
                   try {
                     final currentLocation =
                         await _locationService.getCurrentLocation();
-                    searchResult =
-                        await _locationService.searchNearBySpot();
+                    searchResult = await _locationService.searchNearBySpot();
                     lat = '${currentLocation.latitude}';
                     long = '${currentLocation.longitude}';
                     setState(() {
