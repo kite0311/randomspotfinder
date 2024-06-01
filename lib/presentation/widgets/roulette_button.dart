@@ -4,7 +4,8 @@ import 'package:rive/rive.dart';
 import '../pages/roulette/roulette_screen.dart';
 
 class RouletteButton extends StatefulWidget {
-  const RouletteButton({super.key});
+  const RouletteButton({super.key, required List<String> isSelectedItem});
+  final String type = '';
 
   @override
   State<RouletteButton> createState() => _RouletteButtonState();

@@ -5,6 +5,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
+import '../../../constant/types.dart';
+
 class RouletteScreen extends StatefulWidget {
   const RouletteScreen({super.key});
 
@@ -16,6 +18,9 @@ class _RouletteScreen extends State<RouletteScreen> {
   /// Roulette values
   List<String> Item = [];
 
+  /// テスト用の文字列
+  Type entertainment = Entertainment;
+
   /// Result of roulette
   List<String> results = [];
   int? selectedIndex;
@@ -25,7 +30,7 @@ class _RouletteScreen extends State<RouletteScreen> {
   @override
   initState() {
     super.initState();
-    Item = generateItemList();
+    Item = generateItemTypes(entertainment);
   }
 
   @override
@@ -78,14 +83,27 @@ class _RouletteScreen extends State<RouletteScreen> {
 }
 
 /// Itemlist generator
-List<String> generateItemList() {
-  int listLength = Random().nextInt(10) + 1;
-  String item = '';
-  List<String> itemList = [];
+List<String> generateItemTypes(Type type) {
+  List<String> typesList = [];
 
-  for (int i = 0; i < listLength + 1; i++) {
-    item += Random().nextInt(10).toString();
-    itemList.add(item);
+  switch (type) {
+    case Entertainment:
+      return typesList = Entertainment.entertainmentList;
+    case FoodAndDrink:
+      return typesList = FoodAndDrink.foodAndDrinkList;
+    case Shopping:
+      return typesList = Shopping.shoppingList;
+    case HealthAndWellness:
+      return typesList = HealthAndWellness.healthAndWellnessList;
+    case Services:
+      return typesList = Services.servicesList;
+    case Transportation:
+      return typesList = Transportation.transportationList;
+    case EducationAndGovernment:
+      return typesList = EducationAndGovernment.educationAndGovernmentList;
+    case Miscellaneous:
+      return typesList = Miscellaneous.miscellaneousList;
   }
-  return itemList;
+
+  return typesList;
 }
