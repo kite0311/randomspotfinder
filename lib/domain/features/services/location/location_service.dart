@@ -3,29 +3,23 @@ import 'dart:ui';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:randomspotfinder/constant/types.dart';
-import 'package:dotenv/dotenv.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../../../config.dart';
 import '../../../../models/nearby/nearby.dart';
 import '../../../types/direction.dart';
 import 'location_updator.dart';
 
 /*
  * 現在地の取得と近くの施設を検索するクラス
+ * @return Position 現在地の緯度経度
  */
 class LocationService {
-
-  Future loadEnv () async {
-    await dotenv.load(fileName: '.env');
-  }
-
-
   // PlacesAPIのURL
   final String baseUrlByNearBySearch =
       'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 
   // APIキー
-  final String apikey = API_KEY;
+  final String apikey = dotenv.get('API_KEY');
 
   Future<Position> getCurrentLocation() async {
     // 位置情報の取得を許可するかどうかの確認
@@ -50,54 +44,47 @@ class LocationService {
    * @return List<NearBy> 検索結果
    * */
   Future<List<NearBy>> searchNearBySpot() async {
-    // 現在地を取得
     Position position = await getCurrentLocation();
-
-    // 検索範囲を設定
-    final String distance = '1500';
-
-    // 検索する施設の種類を設定
+    const String distance = '1500';
     String type = FoodAndDrink.RESTAURANT;
-
-    // 現在地の緯度経度
     String currentLocation = '${position.latitude},${position.longitude}';
 
-    // API検索結果を格納するリスト
     List<NearBy> allNearBySpot = [];
-    // 結果返却用リスト
-    List<NearBy> allNearBySpotDistinct = [];
 
-    //　現在地から規定範囲内で検索
-    String responseUrl =
-        '$baseUrlByNearBySearch?location=$currentLocation&radius=$distance&type=$type&key=$apikey';
-    List<NearBy> results = await searchNearBy(responseUrl);
-    allNearBySpot.addAll(results);
+    // 現在地から検索
+    allNearBySpot.addAll(
+        await searchNearByUsingLocation(currentLocation, type, distance));
 
     // 検索範囲を拡大するため、現在地から起点に東西南北に検索範囲を拡大
     for (var dir in Direction.values) {
-      final String setLocation = LocationUpdater.calculateNewPosition(
+      String setLocation = LocationUpdater.calculateNewPosition(
         position.latitude,
         position.longitude,
         dir,
         double.parse(distance),
       );
-
-      String responseUrl =
-          '$baseUrlByNearBySearch?location=$setLocation&radius=$distance&type=$type&key=$apikey';
-
-      //各方角の検索結果を集計
-      List<NearBy> results = await searchNearBy(responseUrl);
-      allNearBySpot.addAll(results);
+      // 範囲拡大した地点から検索
+      allNearBySpot
+          .addAll(await searchNearByUsingLocation(setLocation, type, distance));
     }
-    allNearBySpotDistinct = checkDistinct(allNearBySpot);
 
-    return allNearBySpotDistinct;
+    return checkDistinct(allNearBySpot);
   }
 
   /*
-  * PlacesAPIの検索結果を元に
-  * PlacePhoto APIを叩いて画像データを取得する
-  *  */
+   * PlacesAPIを叩いて検索結果を取得する
+   * @return List<NearBy> 検索結果
+   */
+  Future<List<NearBy>> searchNearByUsingLocation(
+      String location, String type, String distance) async {
+    String responseUrl =
+        '$baseUrlByNearBySearch?location=$location&radius=$distance&type=$type&key=$apikey';
+    return await searchNearBy(responseUrl);
+  }
+
+  /*
+  * PlacesAPIの検索結果を元に PlacePhoto APIを叩いて画像データを取得する
+  */
   Future<Image> fetchPhoto(NearBy searchRes) async {
     //TODO 画像取得
     return 'Hello' as Image;
@@ -127,7 +114,10 @@ class LocationService {
     }
   }
 
-  // 検索結果の重複チェック
+  /*
+   * 検索結果の重複チェック
+   * @return List<NearBy> 重複を除いた検索結果
+   */
   List<NearBy> checkDistinct(List<NearBy> allNearBySpot) {
     List<NearBy> allNearBySpotDistinct = [];
     Map<String, NearBy> distinctMap = {};

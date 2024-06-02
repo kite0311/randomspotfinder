@@ -1,4 +1,5 @@
-.env
+assets/main/.env.production
+assets/develop/.env.development
 
 # API keys
 config.dart

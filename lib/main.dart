@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,8 +11,18 @@ import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dar
 
 import 'firebase_options.dart';
 
-void main() async {
+Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 環境変数の読み込み
+  await dotenv.load(fileName: 'assets/develop/.env.development');
+  //TODO 本番環境でAPIキーを取得する
+  // await DotEnv().load('assets/main/.env.production');
+
+  String test = dotenv.get('API_KEY');
+
+  // Firebaseの初期化
   await Firebase.initializeApp(
     name: 'RandomSpotFinder',
     options: DefaultFirebaseOptions.currentPlatform,
