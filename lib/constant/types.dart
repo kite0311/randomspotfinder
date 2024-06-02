@@ -9,10 +9,10 @@ class Types {
       EducationAndGovernment();
   static final Miscellaneous miscellaneous = Miscellaneous();
 }
-/**
+/*
  * Places API のtypesに設定可能な値を定数化
  * コメントアウト個所は、現状の仕様では使用しない想定
- * */
+ */
 
 class Entertainment {
   static const String AMUSEMENT_PARK = 'amusement_park'; // 遊園地
