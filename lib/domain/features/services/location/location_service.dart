@@ -15,8 +15,7 @@ import 'location_updator.dart';
  */
 class LocationService {
   // PlacesAPIのURL
-  final String baseUrlByNearBySearch =
-      'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+  final String baseUrlByNearBySearch = dotenv.get('BASE_URL_BY_NEARBY_SEARCH');
 
   // APIキー
   final String apikey = dotenv.get('API_KEY');
