@@ -18,9 +18,7 @@ Future<void> main() async {
   // 環境変数の読み込み
   await dotenv.load(fileName: 'assets/develop/.env.development');
   //TODO 本番環境でAPIキーを取得する
-  // await DotEnv().load('assets/main/.env.production');
-
-  String test = dotenv.get('API_KEY');
+  /// dotenv.load(fileName: 'assets/main/.env.production');
 
   // Firebaseの初期化
   await Firebase.initializeApp(

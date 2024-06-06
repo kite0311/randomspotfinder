@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'nearby.freezed.dart';
+part 'nearby_search_result.freezed.dart';
 
-part 'nearby.g.dart';
+part 'nearby_search_result.g.dart';
 
 @freezed
-class NearBy with _$NearBy {
-  const factory NearBy({
+class NearBySearchResult with _$NearBySearchResult {
+  const factory NearBySearchResult({
     /// business_status
     String? businessStatus,
 
@@ -57,9 +57,9 @@ class NearBy with _$NearBy {
 
     /// vicinity
     String? vicinity,
-  }) = _NearBy;
+  }) = _NearBySearchResult;
 
-  factory NearBy.fromJson(Map<String, dynamic> json) => _$NearByFromJson(json);
+  factory NearBySearchResult.fromJson(Map<String, dynamic> json) => _$NearBySearchResultFromJson(json);
 }
 
 class Geometry {
