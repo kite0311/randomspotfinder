@@ -1,7 +1,7 @@
 //TODO: 全体マップ画面
 import 'package:flutter/material.dart';
+import 'package:randomspotfinder/models/dto/nearby_search_result/nearby_search_result.dart';
 import '../../../domain/features/services/location/location_service.dart';
-import '../../../models/nearby/nearby.dart';
 import '../error/error_screen.dart';
 import 'map_result_screen.dart';
 
@@ -14,7 +14,7 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late String lat;
   late String long;
-  late List<NearBy> searchResult = [];
+  late List<NearBySearchResult> searchResult = [];
 
   late String locationMessage = 'WAITING FOR LOCATION...';
   final LocationService _locationService = LocationService();

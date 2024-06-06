@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/features/services/location/location_service.dart';
-import '../../../models/nearby/nearby.dart';
+import '../../../models/dto/nearby_search_result/nearby_search_result.dart';
 
 class MapResult extends StatelessWidget {
   const MapResult({super.key, required this.searchResult});
 
-  final List<NearBy> searchResult;
+  final List<NearBySearchResult> searchResult;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MapResult extends StatelessWidget {
 class searchList extends StatelessWidget {
   const searchList({super.key, required this.searchResult});
 
-  final List<NearBy> searchResult;
+  final List<NearBySearchResult> searchResult;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,12 @@ class searchList extends StatelessWidget {
       itemCount: searchResult.length,
       itemBuilder: (context, index) {
         return ListTile(
+          leading: Image.network(
+            'https://images.idgesg.net/images/article/2017/07/location-pixabay-1200x800-100728584-large.jpg',
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
           isThreeLine: true,
           title: Text('${index + 1}.${searchResult[index].name}'),
           subtitle: Column(
@@ -51,18 +57,17 @@ class searchList extends StatelessWidget {
   }
 }
 
-
 class TestImages extends StatelessWidget {
   TestImages({Key? key}) : super(key: key) {
-    _locationService.fetchPhoto('ChIJN1t_tDeuEmsRUsoyG83frY4' as NearBy);
+    _locationService.fetchPhoto('ChIJN1t_tDeuEmsRUsoyG83frY4' as NearBySearchResult);
   }
+
   final LocationService _locationService = LocationService();
 
   get image => null;
-  
+
   @override
   Widget build(BuildContext context) {
     return Image.asset('assets/images/food.jpg');
   }
 }
-

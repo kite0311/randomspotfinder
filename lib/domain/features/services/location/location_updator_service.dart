@@ -3,9 +3,9 @@
  */
 import 'dart:math';
 
-import '../../../types/direction.dart';
+import '../../../../constant/direction.dart';
 
-class LocationUpdater {
+class LocationUpdaterService {
   // 地球上での緯度1度当たりの距離（メートル単位）
   static const double metersPerDegreeLatitude = 111000;
 
