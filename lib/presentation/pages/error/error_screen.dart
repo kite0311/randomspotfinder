@@ -1,10 +1,10 @@
 //TODO: エラー画面
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/pages/login/initial_screen.dart';
+import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
 class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
+  final String errorMessage;
+  const ErrorScreen({super.key, required this.errorMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ErrorScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text('エラーが発生しました'),
+            Text(errorMessage),
             SizedBox(
               height: 16,
             ),
@@ -24,7 +24,7 @@ class ErrorScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InitailScreen(),
+                    builder: (context) => UserProfileScreen(),
                   ),
                 );
               },

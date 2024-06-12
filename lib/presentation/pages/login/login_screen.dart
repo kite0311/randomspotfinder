@@ -1,12 +1,13 @@
 //TODO: 初期画面(ログイン/非ログインの認証を行う)
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:randomspotfinder/presentation/pages/location_setting/location_setting_screen.dart';
 
-class InitailScreen extends StatelessWidget {
-  const InitailScreen({super.key});
+import '../../../domain/features/services/location/location_service.dart';
+import '../home/home_screen.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class InitailScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LocationSettingScreen(),
+                        builder: (context) => HomeScreen(),
                       ),
                     );
                   },
@@ -62,4 +63,24 @@ Future<void> _addToFirebase() async {
 
   // Firestoreにデータを追加
   await db.collection('users').add(user);
+}
+
+class PermissionCurrentLocation extends StatefulWidget {
+  const PermissionCurrentLocation({super.key});
+
+  @override
+  State<PermissionCurrentLocation> createState() => _PermissionCurrentLocationState();
+}
+
+class _PermissionCurrentLocationState extends State<PermissionCurrentLocation> {
+  @override
+  void initState() {
+    super.initState();
+    LocationService().getCurrentLocation();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }
