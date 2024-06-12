@@ -1,4 +1,4 @@
-class Types {
+class GenreTypes {
   static final Entertainment entertainment = Entertainment();
   static final FoodAndDrink foodAndDrink = FoodAndDrink();
   static final Shopping shopping = Shopping();
