@@ -29,6 +29,11 @@ dependencies:
   retrofit: ^4.1.0
   dotenv: ^4.2.0
   flutter_dotenv: ^5.1.0
+  flutter_native_splash: ^2.4.0
+
+flutter_native_splash:
+    image: assets/splash/test_design.png
+    color: "42a5f5"
 
 dev_dependencies:
   flutter_test:
