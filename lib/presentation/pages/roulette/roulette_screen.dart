@@ -1,14 +1,14 @@
 //TODO: ルーレット画面
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:randomspotfinder/models/dto/searrch_config/user_search_config.dart';
 
-import '../../../constant/types.dart';
+import '../../../constant/genreTypes.dart';
 
 class RouletteScreen extends StatefulWidget {
-  const RouletteScreen({super.key});
+  const RouletteScreen({super.key, required UserSearchConfig userSearchConfig});
 
   @override
   State<RouletteScreen> createState() => _RouletteScreen();
@@ -19,7 +19,7 @@ class _RouletteScreen extends State<RouletteScreen> {
   List<String> Item = [];
 
   /// テスト用の文字列
-  Type entertainment = Entertainment;
+  GenreTypes entertainment = GenreTypes.Entertainment;
 
   /// Result of roulette
   List<String> results = [];
@@ -83,7 +83,7 @@ class _RouletteScreen extends State<RouletteScreen> {
 }
 
 /// Itemlist generator
-List<String> generateItemTypes(Type type) {
+List<String> generateItemTypes(GenreTypes type) {
   List<String> typesList = [];
 
   switch (type) {

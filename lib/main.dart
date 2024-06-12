@@ -1,6 +1,6 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:randomspotfinder/presentation/pages/favorite/favorite_screen.dart';
 import 'package:randomspotfinder/presentation/pages/home/home_screen.dart';
@@ -10,9 +10,9 @@ import 'package:randomspotfinder/presentation/pages/roulette/roulette_screen.dar
 import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
 import 'firebase_options.dart';
+import 'models/dto/searrch_config/user_search_config.dart';
 
 Future<void> main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   // 環境変数の読み込み
@@ -40,13 +40,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      routes: {
-        '/': (context) => const LoginScreen(),
-        '/profile': (context) => const UserProfileScreen(),
-        '/favorite': (context) => const FavoriteScreen(),
-        '/home': (context) => HomeScreen(),
-        'roulette': (context) => const RouletteScreen(),
-        '/map': (context) => MapScreen(),
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (context) => const LoginScreen());
+          case '/profile':
+            return MaterialPageRoute(
+                builder: (context) => const UserProfileScreen());
+          case '/favorite':
+            return MaterialPageRoute(
+                builder: (context) => const FavoriteScreen());
+          case '/home':
+            return MaterialPageRoute(builder: (context) => HomeScreen());
+          case 'roulette':
+            final data = settings.arguments as UserSearchConfig;
+            return MaterialPageRoute(
+                builder: (context) => const RouletteScreen(userSearchConfig: data));
+          case '/map':
+            return MaterialPageRoute(builder: (context) => MapScreen());
+          default:
+            return MaterialPageRoute(builder: (context) => const LoginScreen());
+        }
       },
     );
   }
