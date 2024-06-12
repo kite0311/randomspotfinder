@@ -1,5 +1,4 @@
 //TODO: エラー画面
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:randomspotfinder/presentation/pages/user/user_profile_screen.dart';
 
