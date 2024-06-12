@@ -21,10 +21,11 @@ jobs:
         # PATH を通す
       - name: Add path
         run: echo "$(pwd)/flutter/bin" >> $GITHUB_PATH
-          
-          # パッケージのダウンロード
-               - name: Download Flutter packages
-               run: flutter pub get
+
+        # パッケージのダウンロード
+      - name: Download Flutter packages
+        run: flutter pub get
+
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
