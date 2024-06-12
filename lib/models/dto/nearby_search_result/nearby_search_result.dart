@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'nearby_search_result.freezed.dart';
-
 part 'nearby_search_result.g.dart';
 
 @freezed

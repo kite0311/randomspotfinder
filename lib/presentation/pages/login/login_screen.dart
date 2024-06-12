@@ -1,7 +1,6 @@
 //TODO: 初期画面(ログイン/非ログインの認証を行う)
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/features/services/location/location_service.dart';

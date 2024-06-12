@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:randomspotfinder/constant/types.dart';
+import 'package:randomspotfinder/constant/genreTypes.dart';
 
 import '../../../../constant/direction.dart';
 import '../../../../models/dto/nearby_search_result/nearby_search_result.dart';
@@ -43,7 +43,7 @@ class LocationService {
    * 近くの施設を検索する
    * @return List<NearBySearchResult> 検索結果
    * */
-  Future<List<NearBySearchResult>> searchNearBySearchResultSpot() async {
+  Future<List<NearBySearchResult>> searchNearBySpot() async {
     Position position = await getCurrentLocation();
     const String distance = '1500';
     String type = FoodAndDrink.RESTAURANT;

@@ -1,5 +1,4 @@
 //TODO: ルーレット結果表示画面
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RouletteResultScreen extends StatelessWidget {

@@ -1,6 +1,7 @@
 //TODO: 全体マップ画面
 import 'package:flutter/material.dart';
 import 'package:randomspotfinder/models/dto/nearby_search_result/nearby_search_result.dart';
+
 import '../../../domain/features/services/location/location_service.dart';
 import '../error/error_screen.dart';
 import 'map_result_screen.dart';
